@@ -10,13 +10,21 @@ const reverseString = (string) => {
   return string.split("").reduce((a, b) => b + a, "");
 };
 
-console.log(reverseString(string));
+// console.log(reverseString(string));
 
 /*
 Task 2 : Create a function that takes an array of numbers as input and returns the sum of all positive numbers in the array. 
 
 Example Input: [2, -5, 10, -3, 7] Example Output: 19
 */
+
+const arrayOfNumbers = [2, -5, 10, -3, 7];
+
+const positiveSum = (array) => {
+  return array.reduce((a, b) => (b > 0 ? a + b : a), 0);
+};
+
+// console.log(positiveSum(arrayOfNumbers));
 
 /*
 Task 3: Write a JavaScript program to find the most frequent element in an array and return it. 
