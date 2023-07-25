@@ -7,7 +7,7 @@ Example Input: "hello world" Example Output: "dlrow olleh"
 const string = "hello world";
 
 const reverseString = (string) => {
-  return string.split("").reduce((a, b) => b + a, "");
+  return string.split("").reduce((pre, current) => current + pre, "");
 };
 
 // console.log(reverseString(string));
@@ -21,7 +21,7 @@ Example Input: [2, -5, 10, -3, 7] Example Output: 19
 const arrayOfNumbers = [2, -5, 10, -3, 7];
 
 const positiveSum = (array) => {
-  return array.reduce((a, b) => (b > 0 ? a + b : a), 0);
+  return array.reduce((pre, current) => (current > 0 ? pre + current : pre), 0);
 };
 
 // console.log(positiveSum(arrayOfNumbers));
@@ -31,7 +31,28 @@ Task 3: Write a JavaScript program to find the most frequent element in an array
 
 Example Input: [3, 5, 2, 5, 3, 3, 1, 4, 5] Example Output: 3
 */
+const givenArray = [3, 5, 2, 5, 3, 3, 1, 4, 5];
 
+const mostFrequentFinder = (array) => {
+  let highestFrequency = 0;
+  let mostFrequent = null;
+  for (i = 0; i < array.length; i++) {
+    let frequency = 0;
+    for (j = 0; j < array.length; j++) {
+      if (array[i] === array[j]) {
+        frequency++;
+        if (frequency > highestFrequency) {
+          highestFrequency = frequency;
+          mostFrequent = array[i];
+        }
+      }
+    }
+  }
+
+  return mostFrequent;
+};
+
+console.log(mostFrequentFinder(givenArray));
 /*
 Task 4: Create a function that takes a sorted array of numbers and a target value as input. The function should find two numbers in the array that add up to the target value. Return an array containing the indices of the two numbers.
 
