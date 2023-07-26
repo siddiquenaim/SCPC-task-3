@@ -117,10 +117,49 @@ const mathOperation = (num1, num2, operator) => {
 Task 6: Create a program that generates a random password of a specified length. The password should include a mix of uppercase letters, lowercase letters, numbers, and special characters.
 */
 
+const charLength = 8;
+
+const passwordGenerator = (charLength) => {
+  const charSet =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+  let password = "";
+  let hasNumber = false;
+  let hasCapital = false;
+  let hasSmall = false;
+  let hasSpecial = false;
+
+  for (i = 0; i < charLength; i++) {
+    const index = Math.floor(Math.random() * charSet.length);
+    const random = charSet[index];
+    password += random;
+    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(random)) {
+      hasCapital = true;
+    }
+    if ("abcdefghijklmnopqrstuvwxyz".includes(random)) {
+      hasSmall = true;
+    }
+    if ("0123456789".includes(random)) {
+      hasNumber = true;
+    }
+    if ("!@#$%^&*".includes(random)) {
+      hasSpecial = true;
+    }
+  }
+
+  if (!(hasCapital && hasSmall && hasNumber && hasSpecial)) {
+    return passwordGenerator(charLength);
+  }
+
+  return password;
+};
+
+// console.log(passwordGenerator(charLength));
+
 /*
 Task 7: Implement a function that converts a Roman numeral to an integer. The function should take a Roman numeral string (e.g., "IX" or "XXI") as input and return the corresponding integer value.
 */
-const romanNumeral = "XX";
+const romanNumeral = "XIX";
 
 const romanConverter = (romanNumeral) => {
   const romanNumerals = {
